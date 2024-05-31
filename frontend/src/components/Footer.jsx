@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <div>
         <hr />
-      <footer className="footer p-10  text-base-content">
+      <footer className="footer p-10  text-base-content dark:bg-slate-700 dark:text-white">
         <nav>
           <h6 className="footer-title">Services</h6>
           <a className="link link-hover">Branding</a>
