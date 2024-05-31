@@ -25,7 +25,7 @@ function Navbar() {
       } else {
         setSticky(false);
       }
-    };
+    }; 
 
     window.addEventListener("scroll", handleScroll);
     return () => {
