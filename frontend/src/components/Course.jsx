@@ -2,7 +2,7 @@ import Cards from "./Cards";
 import list from "../../public/list.json";
 import { Link } from "react-router-dom";
 function Course() {
-  console.log(list);
+  // console.log(list);
   return (
     <>
     <div className="max-w-screen-2xl  container mx-auto md:px-20 px-4 ">
