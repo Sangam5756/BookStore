@@ -20,14 +20,20 @@ function Login() {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
-          toast.success("Loggedin successfully")
+          toast.success("Loggedin successfully");
+          document.getElementById("my_modal_3").close();
+
+          setTimeout(() => {
+            window.location.reload();
+            localStorage.setItem("Users", JSON.stringify(res.data.user));
+          }, 1000);
         }
-        localStorage.setItem("Users", JSON.stringify(res.data.user));
       })
       .catch((err) => {
         if (err.response) {
           console.log(err);
-          toast.error("Error "+err.response.data.message)
+          toast.error("Error " + err.response.data.message);
+          setTimeout(() => {},2000);
         }
       });
   };
@@ -37,9 +43,13 @@ function Login() {
         <div className="modal-box dark:bg-slate-700 dark:text-white">
           <form onSubmit={handleSubmit(onSubmit)} method="dialog">
             {/* if there is a button in form, it will close the modal */}
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+            <Link
+              to="/"
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              onClick={() => document.getElementById("my_modal_3").close()}
+            >
               ✕
-            </button>
+            </Link>
 
             <h3 className="font-bold text-lg">Login</h3>
             <div className="mt-4 space-y-2">

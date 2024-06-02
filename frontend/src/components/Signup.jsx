@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 function Signup() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
   const {
     register,
     handleSubmit,
@@ -23,17 +26,21 @@ function Signup() {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
-          toast.success("Signup successfully")
+          toast.success("Signup successfully");
+          navigate(from, { replace: true });
+          setTimeout(() => {
+            window.location.reload();
+            }, 1000);
         }
-        localStorage.setItem("Users",JSON.stringify(res.data.user));
+        localStorage.setItem("Users", JSON.stringify(res.data.user));
       })
       .catch((err) => {
-        if(err.response){
+        if (err.response) {
           console.log(err);
-        toast.error("Error "+err.response.data.message)
+          toast.error("Error " + err.response.data.message);
         }
       });
-  }
+  };
 
   return (
     <>
@@ -124,7 +131,6 @@ function Signup() {
       </div>
     </>
   );
-};
-
+}
 
 export default Signup;
