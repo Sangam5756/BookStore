@@ -3,11 +3,15 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
+
 import bookRoute from "./route/book.route.js";
+import userRoute from "./route/user.route.js";
 
 dotenv.config();
 const app = express();
-app.use(cors())
+app.use(cors());
+app.use(express.json());
+
 const PORT = process.env.PORT || 8000;
 
 const MONGO_URL = process.env.MONGO_URL;
@@ -22,6 +26,7 @@ const connect = async (req, res) => {
 };
 
 app.use("/book", bookRoute);
+app.use("/user", userRoute);
 
 app.get("/", (req, res) => {
   res.send("This is root");
