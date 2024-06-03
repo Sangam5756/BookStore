@@ -22,7 +22,7 @@ function Signup() {
       password: data.password,
     };
     await axios
-      .post("http://localhost:8001/user/signup", userInfo)
+      .post("/user/signup", userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
@@ -114,15 +114,10 @@ function Signup() {
                 </button>
                 <p className="text-xl">
                   Have account?{" "}
-                  <button
-                    className="underline text-blue-500 cursor-pointer"
-                    onClick={() =>
-                      document.getElementById("my_modal_3").showModal()
-                    }
-                  >
+                  <Link to={"/"}>
                     Login
-                  </button>{" "}
-                  <Login />
+                  </Link>
+                  
                 </p>
               </div>
             </form>

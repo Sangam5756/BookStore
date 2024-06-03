@@ -2,19 +2,27 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 
 import bookRoute from "./route/book.route.js";
 import userRoute from "./route/user.route.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 8000;
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
+const PORT = process.env.PORT || 8000;
 const MONGO_URL = process.env.MONGO_URL;
+
 
 const connect = async (req, res) => {
   try {
@@ -25,12 +33,14 @@ const connect = async (req, res) => {
   }
 };
 
+
 app.use("/book", bookRoute);
 app.use("/user", userRoute);
 
-app.get("/", (req, res) => {
-  res.send("This is root");
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
+
 
 app.listen(PORT, (req, res) => {
   console.log(`server is listening on http:localhost:${PORT}`);
