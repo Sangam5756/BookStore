@@ -20,8 +20,8 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-const PORT = process.env.PORT || 8000;
-const MONGO_URL = process.env.MONGO_URL;
+const PORT = 8000;
+const MONGO_URL = "mongodb+srv://sangammunde3:69ZEogw3grwMXHyk@cluster0.7e0zod4.mongodb.net/book-store";
 
 
 const connect = async (req, res) => {
