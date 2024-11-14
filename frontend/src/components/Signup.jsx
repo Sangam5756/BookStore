@@ -3,6 +3,7 @@ import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { BackendUrl } from "../../utils/constant";
 
 function Signup() {
   const location = useLocation();
@@ -22,7 +23,7 @@ function Signup() {
       password: data.password,
     };
     await axios
-      .post("http://localhost:8000/user/signup", userInfo)
+      .post(`${BackendUrl}/user/signup`, userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
@@ -30,7 +31,7 @@ function Signup() {
           navigate(from, { replace: true });
           setTimeout(() => {
             window.location.reload();
-            }, 1000);
+          }, 1000);
         }
         localStorage.setItem("Users", JSON.stringify(res.data.user));
       })
@@ -113,11 +114,7 @@ function Signup() {
                   Signup
                 </button>
                 <p className="text-xl">
-                  Have account?{" "}
-                  <Link to={"/"}>
-                    Login
-                  </Link>
-                  
+                  Have account? <Link to={"/"}>Login</Link>
                 </p>
               </div>
             </form>

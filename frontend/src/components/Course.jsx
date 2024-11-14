@@ -2,6 +2,7 @@ import Cards from "./Cards";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BackendUrl } from "../../utils/constant";
 function Course() {
 
   const [Book, setBook] = useState([]);
@@ -9,7 +10,7 @@ function Course() {
   useEffect(() =>{
     const getBook = async() =>{
       try {
-        const res = await axios.get("http://localhost:8000/book");
+        const res = await axios.get(`${BackendUrl}/book`);
         console.log(res.data)
         setBook(res.data);
 

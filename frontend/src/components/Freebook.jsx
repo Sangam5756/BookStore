@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import Cards from "./Cards";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BackendUrl } from "../../utils/constant";
 function Freebook() {
   
 
@@ -11,7 +12,7 @@ function Freebook() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/book");
+        const res = await axios.get(`${BackendUrl}/book`);
         const data = (res.data.filter((data) => data.category === "Free"));
         setBook(data)
       } catch (error) {
