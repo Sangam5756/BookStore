@@ -4,9 +4,8 @@
   "description": "mern project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build":"npm install",
-    "start": "node backend/index.js"
+    "start": "node index.js"
   },
   "type": "module",
   "repository": {
