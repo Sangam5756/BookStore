@@ -23,11 +23,6 @@ app.use(express.static(path.join(__dirname, "../frontend/dist")));
 const PORT = 8000;
 const MONGO_URL = "mongodb+srv://sangammunde3:69ZEogw3grwMXHyk@cluster0.7e0zod4.mongodb.net/book-store";
 
-<<<<<<< HEAD
-
-const MONGO_URL = process.env.MONGO_URL;
-=======
->>>>>>> b228b2b1dd384ac06e69c0f7bcf3e81504bf8823
 
 const connect = async (req, res) => {
   try {
